@@ -25,12 +25,43 @@ document.addEventListener('keyup', function handleKeyboardButtonPress(event){
 
     if(playerPressed === currentAlphabet){
 
+    
+        // 1. get the current score
+        const currentScoreElement = document.getElementById('current_score');
+        const currentScoreText = currentScoreElement.innerText;
+        const currentScore = parseInt(currentScoreText);
 
-        
+
+        // 2. increase the score by 1
+        const newScore = currentScore + 1;
+
+        // 3. show the update score
+        currentScoreElement.innerText = newScore;
+
+        // console.log(currentScore);
+
+
+         
+ 
+         console.log(true);
 
         continueGame();
         removeBackgroundColorById(currentAlphabet);
     }else{
+
+
+        // 1.
+        const currentLifElement = document.getElementById('current_life');
+        const currentLifText = currentLifElement.innerText;
+        const currentLife = parseInt(currentLifText);
+        
+        // 2.
+        const newLife = currentLife - 1;
+
+        // 3.
+        currentLifElement.innerText = newLife;
+
+
         
     }
 

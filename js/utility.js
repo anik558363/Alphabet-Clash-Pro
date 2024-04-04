@@ -43,10 +43,7 @@ function getARandomAlphabet(){
 
 // -------------------------------------------------
 
-// function getContentElement(elementId){
-//     const element = document.getElementById(elementId).innerText;
-//     return element;
-// }
+
 
 
 
