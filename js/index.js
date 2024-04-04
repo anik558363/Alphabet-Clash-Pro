@@ -17,9 +17,22 @@
 
 // capture keyboard key press
 
-document.addEventListener('keyup', function handleKeyboardButtonPress(){
+document.addEventListener('keyup', function handleKeyboardButtonPress(event){
 
-    
+    const playerPressed = event.key;
+
+    const currentAlphabet = document.getElementById('current_alphabet').innerText.toLowerCase();
+
+    if(playerPressed === currentAlphabet){
+
+
+        
+
+        continueGame();
+        removeBackgroundColorById(currentAlphabet);
+    }else{
+        
+    }
 
 })
 

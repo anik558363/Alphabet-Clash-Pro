@@ -3,17 +3,21 @@ function hideElementById(elementId){
     element.classList.add('hidden')
 }
 
+// -----------------------------------------------
 
 function showElementById(elementId){
     const element = document.getElementById(elementId);
     element.classList.remove('hidden');
 }
 
+// ------------------------------------------------
 
 function setBackgroundColorById(elementId){
     const element = document.getElementById(elementId);
     element.classList.add('bg-orange-400');
 }
+
+// --------------------------------------------------
 
 function removeBackgroundColorById(elementId){
     const element = document.getElementById(elementId);
@@ -21,6 +25,7 @@ function removeBackgroundColorById(elementId){
 
 }
 
+// ---------------------------------------------------
 
 function getARandomAlphabet(){
     const alphabetString = 'abcdefghijklmnopqrstuvwxyz';
@@ -36,9 +41,12 @@ function getARandomAlphabet(){
 }
 
 
+// -------------------------------------------------
 
-
-
+// function getContentElement(elementId){
+//     const element = document.getElementById(elementId).innerText;
+//     return element;
+// }
 
 
 
