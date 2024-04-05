@@ -20,6 +20,12 @@
 function handelKeyboardKeyUpEvent(event){
     const playerPressed = event.key;
 
+    // stopt the game if pressed 'Escape'
+    if(playerPressed === 'Escape'){
+        gameOver();
+    }
+
+
     // key player is expected to press
     const currentAlphabetElement = document.getElementById('current_alphabet');
     const currentAlphabet = currentAlphabetElement.innerText;
@@ -151,5 +157,17 @@ function play(){
 function gameOver(){
     hideElementById('play_ground');
     showElementById('final_score');
+
+    // update final score
+    const lastScore = getTextElementValueById('current_score')
+    setValueByInnerText('last_score',lastScore);
+
+    // clear the last selected alphabet highlight
+
+    const  currentAlphabet = getElementTextById('current_alphabet');
+
+    removeBackgroundColorById(currentAlphabet)
+
+
 }
 
