@@ -17,55 +17,96 @@
 
 // capture keyboard key press
 
-document.addEventListener('keyup', function handleKeyboardButtonPress(event){
-
+function handelKeyboardKeyUpEvent(event){
     const playerPressed = event.key;
 
-    const currentAlphabet = document.getElementById('current_alphabet').innerText.toLowerCase();
-
-    if(playerPressed === currentAlphabet){
-
-    
-        // 1. get the current score
-        const currentScoreElement = document.getElementById('current_score');
-        const currentScoreText = currentScoreElement.innerText;
-        const currentScore = parseInt(currentScoreText);
+    // key player is expected to press
+    const currentAlphabetElement = document.getElementById('current_alphabet');
+    const currentAlphabet = currentAlphabetElement.innerText;
+    const expectedAlphabet = currentAlphabet.toLowerCase();
 
 
-        // 2. increase the score by 1
+    // check right or wrong key pressed
+
+    if(playerPressed === expectedAlphabet){
+        
+
+        const currentScore = getTextElementValueById('current_score');
+
         const newScore = currentScore + 1;
 
-        // 3. show the update score
-        currentScoreElement.innerText = newScore;
 
-        // console.log(currentScore);
+        setValueByInnerText('current_score', newScore);
+        
 
 
-         
- 
-         console.log(true);
+        // --------------------------------------
+        // //-------> score update
+        // // 1. get the current score
+        // const currentScoreElement = findInt('current_score');
+        // const currentScoreText = currentScoreElement.innerText;
+        // const currentScore = parseInt(currentScoreText);
 
+
+
+        // // 2. increase the score by 1
+        // const newScore = currentScore + 1;
+        
+
+
+        // // 3. show the update score
+        // currentScoreElement.innerText = newScore;
+
+        // -------------------------------------------
+
+     
+
+
+        // start a new round
         continueGame();
-        removeBackgroundColorById(currentAlphabet);
+        removeBackgroundColorById(expectedAlphabet);
+
     }else{
 
 
-        // 1.
-        const currentLifElement = document.getElementById('current_life');
-        const currentLifText = currentLifElement.innerText;
-        const currentLife = parseInt(currentLifText);
-        
-        // 2.
+        const currentLife = getTextElementValueById('current_life');
+
         const newLife = currentLife - 1;
 
-        // 3.
-        currentLifElement.innerText = newLife;
+        setValueByInnerText('current_life', newLife)
 
 
-        
+        if(newLife === 0){
+
+            gameOver();
+
+        }
+
+
+        // ---------------------------------------
+        // // 1.get the current life number
+        // const currentLifeElement  = findInt('current_life');
+        // const currentLifeText = currentLifeElement.innerText;
+        // const currentLife = parseInt(currentLifeText);
+
+        // // 2. reduce the current life number
+        // const newLife = currentLife - 1;
+
+        // // 3. display the updated life count
+        // currentLifeElement.innerText = newLife;
+        // -------------------------------------------
+
+       
     }
 
-})
+
+
+}
+
+
+
+document.addEventListener('keyup', handelKeyboardKeyUpEvent)
+
 
 
 // -----------------------------------------------
@@ -73,8 +114,7 @@ document.addEventListener('keyup', function handleKeyboardButtonPress(event){
 function continueGame(){
     // step-1: generate a random alphabet
     const alphabet =  getARandomAlphabet();
-    console.log(alphabet);
-
+    
 
     // set randomly generated alphabet to the screen (show it)
     const currentAlphabet = document.getElementById('current_alphabet');
@@ -91,7 +131,25 @@ function continueGame(){
 // ----------------------------------------------------
 
 function play(){
+
+    // hide everything show only the playground
     hideElementById('home_screen');
+    hideElementById('final_score')
     showElementById('play_ground');
+
+
+    // reset score and life
+    setValueByInnerText('current_life', 5)
+    setValueByInnerText('current_score', 0)
+
+    // continue Game function
     continueGame();
 }
+
+
+
+function gameOver(){
+    hideElementById('play_ground');
+    showElementById('final_score');
+}
+

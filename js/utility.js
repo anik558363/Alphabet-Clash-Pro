@@ -45,7 +45,36 @@ function getARandomAlphabet(){
 
 
 
+function getTextElementValueById(elementId){
+    const element = document.getElementById(elementId);
+    const elementText = element.innerText;
+    const elementNumber = parseInt(elementText);
 
+    return elementNumber;
+}
+
+
+
+// -------------------------------------
+
+
+function setValueByInnerText(elementId, value){
+    const element = document.getElementById(elementId);
+
+    element.innerText = value;
+}
+
+
+
+// -------------------------------------------------
+
+
+// function findInt(elementId){
+//     const element = document.getElementById(elementId);
+//     return element;
+// }
+
+// -------------------------------------
 
 
 
